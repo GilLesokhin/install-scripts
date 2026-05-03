@@ -9,7 +9,9 @@ sudo pacman -Syu --noconfirm
 echo "Installing packages..."
 sudo pacman -S --needed --noconfirm \
   fastfetch \
+  git \
   clang \
+  llvm \
   python \
   github-cli \
   uv \
@@ -26,7 +28,9 @@ sudo pacman -S --needed --noconfirm \
   fd \
   ghostty \
   zed \
+  helium-browser-bin \
   ttf-roboto-mono-nerd
+
 
 echo "Installing opencode-ai..."
 if ! command -v opencode &> /dev/null; then

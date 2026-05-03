@@ -12,25 +12,37 @@ grep -q "^keepcache=True" /etc/dnf/dnf.conf || echo "keepcache=True" | sudo tee 
 sudo dnf update -y
 sudo dnf upgrade -y
 sudo dnf copr enable -y atim/starship
+sudo dnf copr enable -y scottames/ghostty
+sudo dnf copr enable -y che/zed
+sudo dnf copr enable -y che/nerd-fonts
+sudo dnf copr enable -y imput/helium
 
 sudo dnf install -y \
   fastfetch \
+  git \
+  gh \
   clang \
   llvm \
   python3 \
-  gh \
   uv \
+  npm \
   stow \
   ripgrep \
   fd-find \
-  npm \
   starship \
   zoxide \
   fzf \
   bat \
   eza \
   neovim \
-  tmux
+  tmux \
+  ghostty \
+  zed \
+  helium-bin \
+  google-roboto-fonts \
+  google-roboto-mono-fonts \
+  nerd-fonts
+
 
 echo "Installing opencode-ai..."
 if ! command -v opencode &> /dev/null; then
@@ -56,6 +68,6 @@ else
 fi
 
 echo "Stowing dotfiles..."
-cd ~/dotfiles && stow  --adopt starship bash
+cd ~/dotfiles && stow --adopt starship bash
 
 echo "Setup complete! Please restart your terminal or run 'source ~/.bashrc' to apply your new configurations."
