@@ -25,12 +25,6 @@ sudo apt install -y \
   neovim \
   tmux
 
-echo "Installing uv..."
-if ! command -v uv &> /dev/null; then
-  curl -LsSf https://astral.sh/uv/install.sh | sh
-else
-  echo "uv is already installed, skipping."
-fi
 
 echo "Installing opencode-ai..."
 if ! command -v opencode &> /dev/null; then
