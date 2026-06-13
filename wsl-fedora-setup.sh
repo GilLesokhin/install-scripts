@@ -17,7 +17,9 @@ sudo dnf copr enable -y lihaohong/yazi
 sudo dnf install -y \
   7zip \
   bat \
+  btop \
   clang \
+  du-dust \
   eza \
   fastfetch \
   fd-find \
