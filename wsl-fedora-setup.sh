@@ -12,28 +12,36 @@ grep -q "^keepcache=True" /etc/dnf/dnf.conf || echo "keepcache=True" | sudo tee 
 sudo dnf update -y
 sudo dnf upgrade -y
 sudo dnf copr enable -y atim/starship
+sudo dnf copr enable -y lihaohong/yazi
 
 sudo dnf install -y \
-  fastfetch \
-  clang \
-  llvm \
-  python3 \
-  gh \
-  uv \
-  stow \
-  ripgrep \
-  fd-find \
-  npm \
-  starship \
-  zoxide \
-  fzf \
+  7zip \
   bat \
+  clang \
   eza \
+  fastfetch \
+  fd-find \
+  ffmpeg-free \
+  fzf \
+  gh \
+  golang \
+  jq \
+  llvm \
   neovim \
-  tmux
+  npm \
+  poppler-utils \
+  python3 \
+  resvg \
+  ripgrep \
+  starship \
+  stow \
+  tmux \
+  uv \
+  yazi \
+  zoxide
 
 echo "Installing opencode-ai..."
-if ! command -v opencode &> /dev/null; then
+if ! command -v opencode &>/dev/null; then
   sudo npm i -g opencode-ai
 else
   echo "opencode-ai is already installed, skipping."
@@ -56,6 +64,6 @@ else
 fi
 
 echo "Stowing dotfiles..."
-cd ~/dotfiles && stow  --adopt starship bash
+cd ~/dotfiles && stow --adopt starship bash
 
 echo "Setup complete! Please restart your terminal or run 'source ~/.bashrc' to apply your new configurations."
