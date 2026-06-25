@@ -29,7 +29,7 @@ sudo dnf install -y \
   jq \
   llvm \
   neovim \
-  npm \
+  nodejs22 \
   poppler-utils \
   python3 \
   resvg \
@@ -42,7 +42,7 @@ sudo dnf install -y \
   zoxide \  zsh \
   zsh-autosuggestions \
   zsh-syntax-highlighting
-  
+
 echo "Installing opencode-ai..."
 if ! command -v opencode &>/dev/null; then
   sudo npm i -g opencode-ai
