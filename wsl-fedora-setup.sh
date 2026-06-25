@@ -26,7 +26,6 @@ sudo dnf install -y \
   ffmpeg-free \
   fzf \
   gh \
-  golang \
   jq \
   llvm \
   neovim \
@@ -40,8 +39,10 @@ sudo dnf install -y \
   tmux \
   uv \
   yazi \
-  zoxide
-
+  zoxide \  zsh \
+  zsh-autosuggestions \
+  zsh-syntax-highlighting
+  
 echo "Installing opencode-ai..."
 if ! command -v opencode &>/dev/null; then
   sudo npm i -g opencode-ai
@@ -66,6 +67,26 @@ else
 fi
 
 echo "Stowing dotfiles..."
-cd ~/dotfiles && stow --adopt starship bash
+cd ~/dotfiles && stow --adopt starship bash zsh bat opencode
 
-echo "Setup complete! Please restart your terminal or run 'source ~/.bashrc' to apply your new configurations."
+echo "Installing zsh plugins..."
+if [ ! -d "$HOME/.zsh/plugins/zsh-auto-notify" ]; then
+  git clone https://github.com/MichaelAquilina/zsh-auto-notify ~/.zsh/plugins/zsh-auto-notify
+fi
+if [ ! -d "$HOME/.zsh/plugins/zsh-you-should-use" ]; then
+  git clone https://github.com/MichaelAquilina/zsh-you-should-use ~/.zsh/plugins/zsh-you-should-use
+fi
+if [ ! -d "$HOME/.zsh/plugins/zsh-history-substring-search" ]; then
+  git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/plugins/zsh-history-substring-search
+fi
+if [ ! -d "$HOME/.zsh/plugins/fzf-tab" ]; then
+  git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
+fi
+
+echo "Adding zsh to /etc/shells..."
+grep -q "^$(which zsh)$" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells >/dev/null
+
+echo "Setting zsh as default shell..."
+sudo chsh -s "$(which zsh)" "$(whoami)"
+
+echo "Setup complete! Please log out and back in for the shell change to take effect."
