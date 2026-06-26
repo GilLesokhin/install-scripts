@@ -39,7 +39,8 @@ sudo dnf install -y \
   tmux \
   uv \
   yazi \
-  zoxide \  zsh \
+  zoxide \
+  zsh \
   zsh-autosuggestions \
   zsh-syntax-highlighting
 
@@ -70,15 +71,6 @@ echo "Stowing dotfiles..."
 cd ~/dotfiles && stow --adopt starship bash zsh bat opencode
 
 echo "Installing zsh plugins..."
-if [ ! -d "$HOME/.zsh/plugins/zsh-auto-notify" ]; then
-  git clone https://github.com/MichaelAquilina/zsh-auto-notify ~/.zsh/plugins/zsh-auto-notify
-fi
-if [ ! -d "$HOME/.zsh/plugins/zsh-you-should-use" ]; then
-  git clone https://github.com/MichaelAquilina/zsh-you-should-use ~/.zsh/plugins/zsh-you-should-use
-fi
-if [ ! -d "$HOME/.zsh/plugins/zsh-history-substring-search" ]; then
-  git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/plugins/zsh-history-substring-search
-fi
 if [ ! -d "$HOME/.zsh/plugins/fzf-tab" ]; then
   git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
 fi
