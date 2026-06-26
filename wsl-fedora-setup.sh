@@ -12,12 +12,10 @@ grep -q "^keepcache=True" /etc/dnf/dnf.conf || echo "keepcache=True" | sudo tee 
 sudo dnf update -y
 sudo dnf upgrade -y
 sudo dnf copr enable -y atim/starship
-sudo dnf copr enable -y lihaohong/yazi
 
 sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 sudo dnf install -y \
-  7zip \
   bat \
   btop \
   clang \
@@ -28,19 +26,14 @@ sudo dnf install -y \
   ffmpeg \
   fzf \
   gh \
-  jq \
-  llvm \
   neovim \
   nodejs22 \
-  poppler-utils \
   python3 \
-  resvg \
   ripgrep \
   starship \
   stow \
   tmux \
   uv \
-  yazi \
   zoxide \
   zsh \
   zsh-autosuggestions \
