@@ -14,6 +14,8 @@ sudo dnf upgrade -y
 sudo dnf copr enable -y atim/starship
 sudo dnf copr enable -y lihaohong/yazi
 
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
 sudo dnf install -y \
   7zip \
   bat \
