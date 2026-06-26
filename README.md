@@ -1,3 +1,3 @@
 # Install Scripts
 
-Setup scripts for Arch Linux, Fedora WSL, Ubuntu WSL.
+Setup scripts for Fedora WSL, Ubuntu WSL.
