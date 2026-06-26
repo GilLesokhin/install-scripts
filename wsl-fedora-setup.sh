@@ -25,7 +25,7 @@ sudo dnf install -y \
   eza \
   fastfetch \
   fd-find \
-  ffmpeg-free \
+  ffmpeg \
   fzf \
   gh \
   jq \
