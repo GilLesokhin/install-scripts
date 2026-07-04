@@ -16,13 +16,17 @@ sudo dnf install -y \
   ffmpegthumbnailer \
   fzf \
   gh \
+  gnome-tweaks \
+  gparted \
   google-roboto-fonts \
   helium-bin \
   jq \
   neovim \
   nerd-fonts \
   nodejs22 \
+  papirus-icon-theme \
   python3 \
+  qbittorrent \
   ripgrep \
   starship \
   stow \
