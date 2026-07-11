@@ -12,36 +12,34 @@ sudo dnf upgrade -y
 
 echo "Enabling repositories..."
 sudo dnf copr enable -y atim/starship
-sudo dnf copr enable -y imput/helium
+sudo dnf copr enable -y scottames/ghostty
 sudo dnf copr enable -y che/nerd-fonts
-
-sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 echo "Installing packages..."
 sudo dnf install -y \
   7zip \
   bat \
-  btop \
-  clang \
   du-dust \
   eza \
   fastfetch \
   fd-find \
   ffmpeg \
-  ffmpegthumbnailer \
   fzf \
   gh \
+  ghostty \
   google-chrome-stable \
+  gnome-shell-extension-dash-to-dock \
+  gnome-shell-extension-dash-to-panel \
+  gnome-shell-extension-user-theme \
+  gnome-shell-extension-just-perfection \
   gnome-tweaks \
-  gparted \
   google-roboto-fonts \
-  helium-bin \
+  google-roboto-mono-fonts \
   jq \
   neovim \
   nerd-fonts \
   nodejs22 \
   papirus-icon-theme \
-  python3 \
   qbittorrent \
   ripgrep \
   starship \
@@ -52,6 +50,13 @@ sudo dnf install -y \
   zsh \
   zsh-autosuggestions \
   zsh-syntax-highlighting
+
+echo "Installing Extensions Manager via Flatpak..."
+if ! command -v flatpak &>/dev/null; then
+  sudo dnf install -y flatpak
+fi
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install -y flathub com.mattjakeman.ExtensionManager
 
 echo "Installing Zed..."
 if ! command -v zed &>/dev/null; then
