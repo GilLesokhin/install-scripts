@@ -18,7 +18,6 @@ sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfre
 sudo dnf install -y \
   bat \
   btop \
-  clang \
   du-dust \
   eza \
   fastfetch \
@@ -28,7 +27,6 @@ sudo dnf install -y \
   gh \
   neovim \
   nodejs22 \
-  python3 \
   ripgrep \
   starship \
   stow \
@@ -63,7 +61,7 @@ else
 fi
 
 echo "Stowing dotfiles..."
-cd ~/dotfiles && stow --adopt starship bash zsh bat opencode
+stow --dir ~/dotfiles --target ~ --adopt starship bash zsh bat opencode
 
 echo "Installing zsh plugins..."
 if [ ! -d "$HOME/.zsh/plugins/fzf-tab" ]; then

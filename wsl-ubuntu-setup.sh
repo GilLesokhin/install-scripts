@@ -8,26 +8,27 @@ sudo apt update -y
 sudo apt upgrade -y
 
 sudo apt install -y \
-  fastfetch \
-  clang \
-  llvm \
-  python3 \
-  gh \
-  stow \
-  ripgrep \
-  fd-find \
-  npm \
-  zoxide \
-  fzf \
   bat \
+  btop \
+  du-dust \
   eza \
-  starship \
+  fastfetch \
+  fd-find \
+  ffmpeg \
+  fzf \
+  gh \
+  llvm \
   neovim \
-  tmux
-
+  npm \
+  ripgrep \
+  starship \
+  stow \
+  tmux \
+  zoxide \
+  zsh
 
 echo "Installing opencode-ai..."
-if ! command -v opencode &> /dev/null; then
+if ! command -v opencode &>/dev/null; then
   sudo npm i -g opencode-ai
 else
   echo "opencode-ai is already installed, skipping."
@@ -50,6 +51,17 @@ else
 fi
 
 echo "Stowing dotfiles..."
-cd ~/dotfiles && stow --adopt starship bash
+stow --dir ~/dotfiles --target ~ --adopt starship bash zsh bat opencode
 
-echo "Setup complete! Please restart your terminal or run 'source ~/.bashrc' to apply your new configurations."
+echo "Installing zsh plugins..."
+if [ ! -d "$HOME/.zsh/plugins/fzf-tab" ]; then
+  git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
+fi
+
+echo "Adding zsh to /etc/shells..."
+grep -q "^$(which zsh)$" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells >/dev/null
+
+echo "Setting zsh as default shell..."
+sudo chsh -s "$(which zsh)" "$(whoami)"
+
+echo "Setup complete! Please log out and back in for the shell change to apply."
